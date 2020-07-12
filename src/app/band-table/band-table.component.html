@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <span class="title-center">Metal i Hardkor bendovi Srbije</span>
+    
+    </mat-toolbar>
+    <p>Ako su neke informacije netačne, nepotpune ili imate predlog da se postavi bend koji nije u databazi, pošaljite na mejl darko.dekan@protonmail.com</p>
+    <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraga...">
+    </mat-form-field>
+    <div class="container mat-elevation-z8">
+        <mat-table [dataSource]="dataSource" class="mat-cell" matSort>
+            <!--
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.id}}
+    
+                </mat-cell>
+                
+            </ng-container>
+        -->
+            <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Ime</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="genre">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Žanr</mat-header-cell> 
+                <mat-cell *matCellDef="let row">{{row.genre}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Mesto
+                    
+                </mat-header-cell> 
+                <mat-cell *matCellDef="let row">{{row.location}}</mat-cell>
+            </ng-container>
+            <!-- actions -->
+        
+            <!--
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>
+                    <button mat-icon-button color="primary"  (click)="openDialog(1,null,null,null, null)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-header-cell>  
+                
+                <mat-cell *matCellDef="let row; let i=index;">
+                    <button mat-icon-button color="primary" (click)="openDialog(2,row.id,row.name,row.genre, row.location)">
+                        <mat-icon aria-label="Edit">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="primary" (click)="openDialog(3,row.id,row.name,row.genre, row.location)">
+                        <mat-icon aria-label="Delete">delete</mat-icon>
+                    </button>
+                </mat-cell>
+            
+            </ng-container>
+        -->
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row style="cursor: default" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            
+        </mat-table>
+    
+    
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]" [showFirstLastButtons]="true"></mat-paginator>
+    
+    </div>
